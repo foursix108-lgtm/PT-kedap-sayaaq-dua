@@ -1,0 +1,218 @@
+/* --- STYLE UMUM --- */
+* { font-family: 'Poppins', sans-serif; }
+[x-cloak] { display: none !important; }
+
+/* TRANSISI TEMA (Smooth Color Change) */
+body {
+    scroll-behavior: smooth;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3d5e5 100%);
+    min-height: 100vh;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* --- BACKGROUND HERO --- */
+.hero-bg {
+    /* 🔴 [GANTI FOTO BACKGROUND BESAR] Ganti link di dalam url('...') dengan 'Aset/nama_file.jpg' */
+    background: linear-gradient(rgba(42, 107, 47, 0.8), rgba(42, 107, 47, 0.8)),
+    url('Aset/bg_ksd.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(74, 157, 111, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(45, 122, 74, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* --- STYLE NAVBAR --- */
+.nav-link { position: relative; transition: all 0.3s ease; color: #f5f5f5; text-decoration: none; }
+.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -8px; left: 0; background-color: #6ba547; transition: width 0.3s ease; }
+.nav-link:hover { color: #6ba547; }
+.nav-link:hover::after { width: 100%; }
+
+.navbar {
+    background: linear-gradient(90deg, rgba(26, 77, 46, 0.95), rgba(45, 122, 74, 0.95));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+}
+.scrolled { background: linear-gradient(90deg, rgba(26, 77, 46, 0.98), rgba(45, 122, 74, 0.98)); }
+
+/* --- ANIMASI & EFEK KARTU --- */
+.fade-in { animation: fadeIn 0.8s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Efek Sliding Gambar Halus */
+.sliding-track {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+    height: 100%;
+}
+.sliding-item {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.card-hover { transition: all 0.3s ease; }
+.card-hover:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(42, 107, 47, 0.25); }
+
+.btn-primary {
+    background: linear-gradient(135deg, #4a9d6f 0%, #2d7a4a 100%);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(74, 157, 111, 0.3);
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #3a8d5f 0%, #1d6a3a 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(42, 107, 47, 0.4);
+}
+
+.section-title { position: relative; padding-bottom: 20px; display: inline-block; }
+.section-title::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 80px; height: 4px;
+    background: linear-gradient(90deg, #2d7a4a, #6ba547); border-radius: 2px;
+}
+
+.stats-box {
+    background: rgba(107, 165, 71, 0.1); border: 2px solid rgba(107, 165, 71, 0.3);
+    border-radius: 15px; 
+    text-align: center; transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+}
+.stats-box:hover { background: rgba(107, 165, 71, 0.15); border-color: #4a9d6f; transform: translateY(-5px); }
+
+/* --- CUSTOM SCROLLBAR (HIJAU) --- */
+.green-scrollbar::-webkit-scrollbar { height: 10px; }
+.green-scrollbar::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+.green-scrollbar::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 10px; border: 2px solid #e2e8f0; }
+.green-scrollbar::-webkit-scrollbar-thumb:hover { background: #15803d; }
+
+details summary::-webkit-details-marker { display: none; }
+
+/* ============================================================
+   CSS STRUKTUR ORGANISASI (POHON COMPLEX)
+   ============================================================ */
+.org-tree-container {
+    overflow-x: auto;
+    text-align: center;
+    padding-bottom: 2rem;
+    cursor: grab;
+}
+.org-tree-container:active { cursor: grabbing; }
+.org-tree { display: inline-block; min-width: 100%; }
+.org-tree ul {
+    padding-top: 20px; position: relative;
+    transition: all 0.5s; display: flex; justify-content: center;
+}
+.org-tree li {
+    float: left; text-align: center; list-style-type: none;
+    position: relative; padding: 20px 10px 0 10px; transition: all 0.5s;
+}
+/* Garis Konektor */
+.org-tree li::before, .org-tree li::after {
+    content: ''; position: absolute; top: 0; right: 50%;
+    border-top: 2px solid #16a34a; width: 50%; height: 20px;
+}
+.org-tree li::after { right: auto; left: 50%; border-left: 2px solid #16a34a; }
+.org-tree li:only-child::after, .org-tree li:only-child::before { display: none; }
+.org-tree li:only-child { padding-top: 0; }
+.org-tree li:first-child::before, .org-tree li:last-child::after { border: 0 none; }
+.org-tree li:last-child::before{ border-right: 2px solid #16a34a; border-radius: 0 10px 0 0; }
+.org-tree li:first-child::after{ border-radius: 10px 0 0 0; }
+.org-tree ul ul::before{
+    content: ''; position: absolute; top: 0; left: 50%;
+    border-left: 2px solid #16a34a; width: 0; height: 20px;
+}
+/* Kartu Jabatan */
+.org-card {
+    background: white; border: 1px solid #e2e8f0; 
+    border-top: 4px solid #16a34a;
+    padding: 8px 12px; border-radius: 12px; display: inline-block;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: all 0.3s;
+    min-width: 130px; position: relative; z-index: 10;
+}
+.org-card img {
+    width: 50px; height: 50px; border-radius: 50%; object-fit: cover; 
+    margin: 0 auto 5px; border: 2px solid #16a34a;
+}
+.org-card:hover {
+    background: #f0fdf4; transform: translateY(-5px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); z-index: 20; border-color: #16a34a;
+}
+.org-name { font-weight: 700; color: #0f172a; font-size: 0.75rem; line-height: 1.2; }
+.org-role { color: #16a34a; font-size: 0.65rem; font-weight: 600; margin-bottom: 2px; text-transform: uppercase; }
+
+@media (max-width: 768px) { .hero-bg { min-height: 60vh; } }
+
+/* ============================================================
+   CSS KHUSUS TEMA GELAP (AGAR SEMUA TEKS TERLIHAT JELAS)
+   ============================================================ */
+.dark body { background: #0f172a !important; color: #f8fafc !important; }
+.dark .bg-white { background-color: #1e293b !important; border-color: #334155 !important; }
+.dark .bg-slate-50 { background-color: #0f172a !important; border-color: #334155 !important; }
+.dark .bg-gradient-to-b.from-slate-50.to-white { background: linear-gradient(to bottom, #0f172a, #1e293b) !important; }
+
+/* Modifikasi Warna Teks (Penting agar teks terlihat jelas) */
+.dark .text-slate-900 { color: #ffffff !important; }
+.dark .text-slate-800 { color: #f8fafc !important; }
+.dark .text-slate-700 { color: #f1f5f9 !important; }
+.dark .text-slate-600 { color: #e2e8f0 !important; }
+.dark .text-slate-500 { color: #cbd5e1 !important; }
+.dark .text-slate-400 { color: #94a3b8 !important; }
+.dark .text-green-800 { color: #86efac !important; }
+.dark .text-green-700 { color: #4ade80 !important; }
+.dark .text-green-600 { color: #4ade80 !important; }
+.dark .text-yellow-800 { color: #fef08a !important; }
+
+/* Border & Kartu */
+.dark .border-slate-100, .dark .border-slate-200 { border-color: #334155 !important; }
+.dark .bg-green-50 { background-color: rgba(34, 197, 94, 0.1) !important; border-color: rgba(34, 197, 94, 0.2) !important; }
+.dark .bg-yellow-50 { background-color: rgba(234, 179, 8, 0.1) !important; border-color: rgba(234, 179, 8, 0.2) !important; }
+.dark .bg-gradient-to-br.from-green-50.to-transparent { background: linear-gradient(to bottom right, rgba(34, 197, 94, 0.1), transparent) !important; border-color: rgba(34, 197, 94, 0.3) !important; }
+
+/* Kartu Jabatan di Tema Gelap */
+.dark .org-card { background-color: #1e293b !important; border-color: #334155 !important; border-top-color: #22c55e !important; }
+.dark .org-card:hover { background-color: #0f172a !important; border-color: #4ade80 !important; box-shadow: 0 15px 30px rgba(0,0,0,0.5) !important; }
+.dark .org-name { color: #ffffff !important; }
+.dark .org-role { color: #4ade80 !important; }
+
+/* Teks di dalam box FAQ (Details) */
+.dark details.bg-slate-50 { background-color: #0f172a !important; border-color: #334155 !important; }
+.dark details.bg-slate-50 summary { color: #f8fafc !important; }
+.dark details.bg-slate-50 p { color: #cbd5e1 !important; border-color: #334155 !important; }
+
+/* ============================================================
+   ANIMASI CUSTOM (MATAHARI TERBIT & BULAN MUNCUL)
+   ============================================================ */
+@keyframes sunRiseAnim {
+    0% { transform: translateY(150px) scale(0.3) rotate(-45deg); opacity: 0; }
+    40% { transform: translateY(-20px) scale(1.3) rotate(10deg); opacity: 1; filter: drop-shadow(0 0 40px rgba(250, 204, 21, 1)); }
+    70% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.8)); }
+    100% { transform: translateY(-150px) scale(0.5) rotate(45deg); opacity: 0; }
+}
+
+@keyframes moonRiseAnim {
+    0% { transform: translateY(-150px) scale(0.3) rotate(45deg); opacity: 0; }
+    40% { transform: translateY(20px) scale(1.3) rotate(-10deg); opacity: 1; filter: drop-shadow(0 0 40px rgba(147, 197, 253, 1)); }
+    70% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; filter: drop-shadow(0 0 20px rgba(147, 197, 253, 0.8)); }
+    100% { transform: translateY(150px) scale(0.5) rotate(-45deg); opacity: 0; }
+}
+
+.animate-sunrise {
+    animation: sunRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-moonrise {
+    animation: moonRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
