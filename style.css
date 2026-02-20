@@ -12,9 +12,8 @@ body {
 
 /* --- BACKGROUND HERO --- */
 .hero-bg {
-    /* 🔴 [GANTI FOTO BACKGROUND BESAR] Ganti link di dalam url('...') dengan 'Aset/nama_file.jpg' */
     background: linear-gradient(rgba(42, 107, 47, 0.8), rgba(42, 107, 47, 0.8)),
-    url('Aset/bg_ksd.png');
+    url('aset/bg_ksd.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -119,7 +118,6 @@ details summary::-webkit-details-marker { display: none; }
     float: left; text-align: center; list-style-type: none;
     position: relative; padding: 20px 10px 0 10px; transition: all 0.5s;
 }
-/* Garis Konektor */
 .org-tree li::before, .org-tree li::after {
     content: ''; position: absolute; top: 0; right: 50%;
     border-top: 2px solid #16a34a; width: 50%; height: 20px;
@@ -134,7 +132,6 @@ details summary::-webkit-details-marker { display: none; }
     content: ''; position: absolute; top: 0; left: 50%;
     border-left: 2px solid #16a34a; width: 0; height: 20px;
 }
-/* Kartu Jabatan */
 .org-card {
     background: white; border: 1px solid #e2e8f0; 
     border-top: 4px solid #16a34a;
@@ -163,7 +160,7 @@ details summary::-webkit-details-marker { display: none; }
 .dark .bg-slate-50 { background-color: #0f172a !important; border-color: #334155 !important; }
 .dark .bg-gradient-to-b.from-slate-50.to-white { background: linear-gradient(to bottom, #0f172a, #1e293b) !important; }
 
-/* Modifikasi Warna Teks (Penting agar teks terlihat jelas) */
+/* Modifikasi Warna Teks */
 .dark .text-slate-900 { color: #ffffff !important; }
 .dark .text-slate-800 { color: #f8fafc !important; }
 .dark .text-slate-700 { color: #f1f5f9 !important; }
@@ -209,10 +206,5 @@ details summary::-webkit-details-marker { display: none; }
     100% { transform: translateY(150px) scale(0.5) rotate(-45deg); opacity: 0; }
 }
 
-.animate-sunrise {
-    animation: sunRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-.animate-moonrise {
-    animation: moonRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
+.animate-sunrise { animation: sunRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.animate-moonrise { animation: moonRiseAnim 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
